@@ -1,0 +1,17 @@
+
+
+colorscheme gruvbox
+let g:lightline = {}
+let g:lightline.colorscheme = 'gruvbox'
+
+let mapleader = " "
+nnoremap <leader>ps :lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")})<CR>
+nnoremap <leader>vm :vsp $MYVIMRC<CR>
+nnoremap <leader>s :so %<CR>
+nnoremap <leader>=g msgg=G`s
+nnoremap <silent><expr> <leader>h (&hls && v:hlsearch ? ':nohls' : ':set hls')."\n"
+
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
