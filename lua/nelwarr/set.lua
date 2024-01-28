@@ -37,7 +37,7 @@ vim.opt.colorcolumn = "80"
 
 vim.g.mapleader = " "
 
-if mac == 1 then
+if mac == 0 then
     vim.g.android_sdk_path = "C:/Users/neilp/AppData/Local/Android/Sdk"
     vim.g.python3_host_prog = "C:/Python312/python"
 end
