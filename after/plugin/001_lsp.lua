@@ -1,15 +1,16 @@
 local lsp = require("lsp-zero")
 lsp.extend_lspconfig()
 
-require('mason').setup({})
-require('mason-lspconfig').setup({
-    ensure_installed = {
-        "lua_ls", "clangd"
-    },
-    handlers = {
-        lsp.default_setup,
-    },
-})
+require('mason').setup()
+require('mason-lspconfig').setup()
+--require('mason-lspconfig').setup({
+--    ensure_installed = {
+--        "lua_ls", "clangd"
+--    },
+--    handlers = {
+--        lsp.default_setup,
+--    },
+--})
 
 
 lsp.configure('lua_ls', {
@@ -82,7 +83,7 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 end)
 
-vim.keymap.set("n", "<M-o>", function() 
+vim.keymap.set("n", "<M-o>", function()
     local filename = vim.fn.expand('%:p')
     local new_filename
 
