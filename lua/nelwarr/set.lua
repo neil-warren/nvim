@@ -1,4 +1,5 @@
 vim.opt.guicursor = ""
+vim.opt.cursorline = true
 
 vim.opt.nu = true
 vim.opt.relativenumber = true
@@ -44,3 +45,4 @@ end
 
 vim.g.loaded_perl_provider = 0
 vim.g.unrealnvim_debug = true
+vim.g.netrw_bufsettings = 'noma nomod nu rnu nobl nowrap ro'
