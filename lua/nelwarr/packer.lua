@@ -29,6 +29,22 @@ return require('packer').startup(function(use)
         end
     })
 
+    use({
+        "kylechui/nvim-surround",
+        tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+        config = function()
+            require("nvim-surround").setup({
+                -- Configuration here, or leave empty to use defaults
+            })
+        end
+    })
+
+    use({
+        "windwp/nvim-ts-autotag",
+        config = function()
+            require('nvim-ts-autotag').setup()
+        end
+    })
     use({"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"})
     use("ellisonleao/gruvbox.nvim")
     use("sainnhe/gruvbox-material")
@@ -73,14 +89,15 @@ return require('packer').startup(function(use)
             -- Snippets
             {'L3MON4D3/LuaSnip'},
             {'rafamadriz/friendly-snippets'},
+
+            -- Linting
+            {'mfussenegger/nvim-lint'},
+
+            -- Autoindent
+            {'Vimjas/vim-python-pep8-indent'},
         }
     }
 
-    use {'zadirion/Unreal.nvim',
-        requires = {
-            {"tpope/vim-dispatch"}
-        }
-    }
 
     if packer_bootstrap then
         require('packer').sync()

@@ -5,7 +5,8 @@ require('mason').setup()
 --require('mason-lspconfig').setup()
 require('mason-lspconfig').setup({
     ensure_installed = {
-        "lua_ls", "clangd"
+        "lua_ls", "clangd", "kotlin_language_server",
+        "pyright", "html", "cssls", "htmx", "tailwindcss",
     },
     handlers = {
         lsp.default_setup,
