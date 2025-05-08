@@ -59,7 +59,15 @@ require('lspconfig')['lua_ls'].setup {
     capabilities = capabilities
 }
 require('lspconfig')['kotlin_language_server'].setup{}
-require('lspconfig')['pyright'].setup{}
+require('lspconfig')['pyright'].setup{
+    settings = {
+        python = {
+            analysis = {
+                typeCheckingMode = "off",
+            },
+        },
+    },
+}
 require('lspconfig')['cssls'].setup{}
 require('lspconfig')['htmx'].setup{}
 require('lspconfig')['html'].setup{
