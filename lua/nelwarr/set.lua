@@ -36,6 +36,8 @@ vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "80"
 
+vim.opt.modeline = false
+
 vim.g.mapleader = " "
 
 if mac == 0 then

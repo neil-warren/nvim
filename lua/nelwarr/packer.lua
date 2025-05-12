@@ -56,7 +56,11 @@ return require('packer').startup(function(use)
     use("liaohui5/vite-server.nvim")
     use("Civitasv/cmake-tools.nvim")
     --use("cdelledonne/vim-cmake")
-    use("theprimeagen/harpoon")
+    use{
+        "theprimeagen/harpoon",
+        branch = "harpoon2",
+        requires = {{"nvim-lua/plenary.nvim"}}
+    }
     use { 'kikito/inspect.lua', commit="8686162bce74913c4d3a577e7324642ddc4e21c0"}
     use {
         requires = { "nvim-treesitter/nvim-treesitter"},
@@ -74,8 +78,8 @@ return require('packer').startup(function(use)
         requires = {
             -- LSP Support
             {'neovim/nvim-lspconfig'},
-            {'williamboman/mason.nvim'},
-            {'williamboman/mason-lspconfig.nvim'},
+            {'mason-org/mason.nvim'},
+            {'mason-org/mason-lspconfig.nvim'},
 
             -- Autocompletion
             {'hrsh7th/nvim-cmp'},
