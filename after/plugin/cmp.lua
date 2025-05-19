@@ -49,27 +49,19 @@ cmp.setup.cmdline(':', {
 })
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
-local clangConf = require('lspconfig')['clangd']
-clangConf.setup {
-    capabilities = capabilities,
-}
-
-require('lspconfig')['lua_ls'].setup {
-    capabilities = capabilities
-}
-require('lspconfig')['kotlin_language_server'].setup{}
 require('lspconfig')['pyright'].setup{
     settings = {
         python = {
             analysis = {
-                --typeCheckingMode = "off",
+                typeCheckingMode = "off",
             },
         },
     },
 }
-require('lspconfig')['cssls'].setup{}
-require('lspconfig')['htmx'].setup{}
+require('lspconfig')['htmx'].setup{
+    capabilities = capabilities,
+    filetypes = { "html", "htmldjango", "jinja", "jinja.html", "djangohtml", "templ" },
+}
 require('lspconfig')['html'].setup{
     filetypes = { "html", "htmldjango" },
 }

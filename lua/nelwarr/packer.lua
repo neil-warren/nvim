@@ -55,6 +55,7 @@ return require('packer').startup(function(use)
     use("hsanson/vim-android")
     use("liaohui5/vite-server.nvim")
     use("Civitasv/cmake-tools.nvim")
+    use("tweekmonster/django-plus.vim")
     --use("cdelledonne/vim-cmake")
     use{
         "theprimeagen/harpoon",

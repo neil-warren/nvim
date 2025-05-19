@@ -2,7 +2,6 @@ local lsp = require("lsp-zero")
 lsp.extend_lspconfig()
 
 require('mason').setup()
---require('mason-lspconfig').setup()
 require('mason-lspconfig').setup({
     ensure_installed = {
         "lua_ls", "clangd", "kotlin_language_server",
@@ -10,6 +9,12 @@ require('mason-lspconfig').setup({
     },
     handlers = {
         lsp.default_setup,
+    },
+    automatic_enable = {
+        exclude = {
+            "pyright",
+            "html",
+        },
     },
 })
 
