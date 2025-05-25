@@ -45,6 +45,13 @@ return require('packer').startup(function(use)
             require('nvim-ts-autotag').setup()
         end
     })
+    use {
+        "windwp/nvim-autopairs",
+        event = "InsertEnter",
+        config = function()
+            require("nvim-autopairs").setup {}
+        end
+    }
     use({"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"})
     use("ellisonleao/gruvbox.nvim")
     use("sainnhe/gruvbox-material")
@@ -56,7 +63,6 @@ return require('packer').startup(function(use)
     use("liaohui5/vite-server.nvim")
     use("Civitasv/cmake-tools.nvim")
     use("tweekmonster/django-plus.vim")
-    --use("cdelledonne/vim-cmake")
     use{
         "theprimeagen/harpoon",
         branch = "harpoon2",
