@@ -59,6 +59,13 @@ return require('packer').startup(function(use)
 	use("neovim/nvim-lspconfig")
     use("dstein64/vim-startuptime")
     use("tpope/vim-fugitive")
+    use({
+        "kdheepak/lazygit.nvim",
+        -- optional for floating window border decoration
+        requires = {
+            "nvim-lua/plenary.nvim",
+        },
+    })
     use("hsanson/vim-android")
     use("liaohui5/vite-server.nvim")
     use("Civitasv/cmake-tools.nvim")
