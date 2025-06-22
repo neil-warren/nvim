@@ -18,8 +18,9 @@ return require('packer').startup(function(use)
         requires = {
             {"nvim-lua/plenary.nvim"},
             {"BurntSushi/ripgrep"}
-        }
+        },
     }
+    use({ "ibhagwan/fzf-lua" })
 
     use({
         "rose-pine/neovim",
@@ -81,7 +82,7 @@ return require('packer').startup(function(use)
         "Badhi/nvim-treesitter-cpp-tools",
     }
     use("nvim-lualine/lualine.nvim", {
-        requires = {"kyazdani42/nvim-web-devicons", opt = true}
+        requires = {"nvim-tree/nvim-web-devicons", opt = true}
     })
 
     use { "ggandor/leap.nvim" }
