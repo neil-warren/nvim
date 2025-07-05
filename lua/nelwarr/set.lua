@@ -48,3 +48,5 @@ end
 vim.g.loaded_perl_provider = 0
 vim.g.unrealnvim_debug = true
 vim.g.netrw_bufsettings = 'noma nomod nu rnu nobl nowrap ro'
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1

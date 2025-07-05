@@ -21,6 +21,17 @@ return require('packer').startup(function(use)
         },
     }
     use({ "ibhagwan/fzf-lua" })
+    use({
+        "toppair/peek.nvim",
+        run = "deno task --quiet build:fast",
+        config = function()
+            require("peek").setup()
+            vim.api.nvim_create_user_command("PeekOpen", require("peek").open, {})
+            vim.api.nvim_create_user_command("PeekClose", require("peek").close, {})
+        end,
+    })
+    use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
+
 
     use({
         "rose-pine/neovim",
@@ -85,6 +96,7 @@ return require('packer').startup(function(use)
         requires = {"nvim-tree/nvim-web-devicons", opt = true}
     })
 
+    use { "nvim-tree/nvim-tree.lua" }
     use { "ggandor/leap.nvim" }
 
     use {
