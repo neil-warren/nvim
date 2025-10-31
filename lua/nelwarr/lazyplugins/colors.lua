@@ -26,20 +26,19 @@ return {
                 styles = {
                     bold = true,
                     italic = true,
-                    transparency = true,
+                    -- transparency = true,
                 },
 
-                highlight_groups = {
-                    CursorLineNr = { fg = "foam", bold = true },
-                },
+                -- No custom highlight_groups needed - rose-pine handles treesitter by default
             })
+
             require("lualine").setup {
                 options = {
                     theme = "rose-pine"
                 }
             }
 
-            SetupColors()
+            --SetupColors()
         end
     }
 }

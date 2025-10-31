@@ -24,13 +24,10 @@ return {
     },
 
     config = function()
+        local lsp = vim.lsp
         local cmp = require('cmp')
         local cmp_lsp = require("cmp_nvim_lsp")
-        local capabilities = vim.tbl_deep_extend(
-            "force",
-            {},
-            vim.lsp.protocol.make_client_capabilities(),
-            cmp_lsp.default_capabilities())
+        local capabilities = cmp_lsp.default_capabilities()
 
         require("mason").setup()
         require("mason-lspconfig").setup({
@@ -39,6 +36,31 @@ return {
                 "pyright", "html", "cssls", "htmx", "tailwindcss",
             },
         })
+        -- configure Swift serve here since it is not installed via Mason
+        lsp.config("sourcekit", {
+            -- capabilities = capabilities,
+            capabilities = capabilities,
+            cmd = { vim.trim(vim.fn.system("xcrun -f sourcekit-lsp")) },
+            on_attach = function (client, bufnr)
+                client.server_capabilities.semanticTokensProvider = nil
+            end,
+            --args = {
+            --    '-Xswiftc', '-sdk',
+            --    '-Xswiftc', '/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk',
+            --    -- Or, for a specific iOS version:
+            --    -- '-Xswiftc', '/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS17.0.sdk',
+            --    '-Xswiftc', '-target',
+            --    '-Xswiftc', 'arm64-apple-ios13.0-simulator', -- Adjust target as needed (e.g., ios17.0)
+            --    '-Xcc', '-DSWIFT_PACKAGE=0' -- May be required for certain project types
+            --},
+            on_init = function(client)
+                -- HACK: to fix some issues with LSP
+                -- more details: https://github.com/neovim/neovim/issues/19237#issuecomment-2237037154
+                client.offset_encoding = "utf-8"
+            end,
+        })
+        lsp.enable({"sourcekit"})
+
 
         local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
@@ -51,13 +73,12 @@ return {
             mapping = cmp.mapping.preset.insert({
                 ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
                 ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-                ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+                ['<CR>'] = cmp.mapping.confirm({ select = true }),
                 ["<C-Space>"] = cmp.mapping.complete(),
             }),
             sources = cmp.config.sources({
                 { name = 'nvim_lsp' },
                 { name = 'luasnip' }, -- For luasnip users.
-            }, {
                 { name = 'buffer' },
             })
         })
