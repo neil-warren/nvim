@@ -13,6 +13,8 @@ return {
     {
         "rose-pine/neovim",
         name = "rose-pine",
+        priority = 1000,
+        lazy = false,
         dependencies = {
             'nvim-lualine/lualine.nvim',
             'nvim-tree/nvim-web-devicons',
@@ -38,7 +40,7 @@ return {
                 }
             }
 
-            --SetupColors()
+            SetupColors()
         end
     }
 }

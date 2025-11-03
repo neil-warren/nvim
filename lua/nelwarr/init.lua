@@ -24,24 +24,24 @@ autocmd("TextYankPost", {
     end,
 })
 
-autocmd("VimEnter", {
-    group = color_group,
-    callback = function()
-        -- Apply the colorscheme only once Neovim is fully initialized
-        vim.cmd.colorscheme("rose-pine")
-
-        -- Re-apply your custom transparency overrides *after* the theme is set.
-        -- This is the only way to ensure they take precedence.
-        vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-        vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-        vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
-        vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none" })
-        vim.api.nvim_set_hl(0, "CursorLine", { bg = "none" })
-
-        -- You may want to comment out the line above if you want
-        -- rose-pine's intended CursorLine color.
-    end,
-})
+--autocmd("VimEnter", {
+--    group = color_group,
+--    callback = function()
+--        -- Apply the colorscheme only once Neovim is fully initialized
+--        vim.cmd.colorscheme("rose-pine")
+--
+--        -- Re-apply your custom transparency overrides *after* the theme is set.
+--        -- This is the only way to ensure they take precedence.
+--        vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+--        vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+--        vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
+--        vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none" })
+--        vim.api.nvim_set_hl(0, "CursorLine", { bg = "none" })
+--
+--        -- You may want to comment out the line above if you want
+--        -- rose-pine's intended CursorLine color.
+--    end,
+--})
 
 autocmd('LspAttach', {
     group = NelwarrGroup,
